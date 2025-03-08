@@ -6,7 +6,7 @@ export default async function createCommentCollection() {
   await databases.createCollection(db, commentCollection, commentCollection, [
     Permission.read("any"),
     Permission.read("users"),
-    Permission.write("users"),
+    Permission.update("users"),
     Permission.delete("users"),
     Permission.create("users"),
   ]);
@@ -19,8 +19,6 @@ export default async function createCommentCollection() {
       "content",
       10000,
       true,
-      undefined,
-      true
     ),
     databases.createStringAttribute(
       db,
@@ -28,8 +26,6 @@ export default async function createCommentCollection() {
       "authorId",
       50,
       true,
-      undefined,
-      true
     ),
     databases.createEnumAttribute(
       db,
@@ -44,8 +40,6 @@ export default async function createCommentCollection() {
       "typeId",
       50,
       true,
-      undefined,
-      true
     ),
   ]);
   console.log(`Attributes created for ${commentCollection}`);

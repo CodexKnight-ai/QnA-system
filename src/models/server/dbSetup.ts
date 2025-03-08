@@ -1,4 +1,3 @@
-import {} from "node-appwrite";
 import { db } from "../name";
 import createAnswerCollection from "./answer.collection";
 import createQuestionCollection from "./question.collection";
@@ -10,7 +9,7 @@ import { databases } from "./config";
 export default async function getCreateDb() {
   try {
     await databases.get(db);
-    console.log("Database already exists");
+    console.log("Database connection");
   } catch (e) {
     try {
       console.log("Creating database");

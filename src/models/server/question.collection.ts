@@ -41,23 +41,29 @@ export default async function createQuestionCollection() {
   ]);
   console.log(`Attributes created for ${questionCollection}`);
 
-  await Promise.all([
-    databases.createIndex(
-      db,
-      questionCollection,
-      "title",
-      IndexType.Fulltext,
-      ["title"],
-      ["asc"]
-    ),
-    databases.createIndex(
-      db,
-      questionCollection,
-      "content",
-      IndexType.Fulltext,
-      ["title"],
-      ["asc"]
-    ),
-  ]);
+  try {
+    await Promise.all([
+      databases.createIndex(
+        db,
+        questionCollection,
+        "title",
+        IndexType.Fulltext,
+        ["title"],
+        ["asc"]
+      ),
+      databases.createIndex(
+        db,
+        questionCollection,
+        "content",
+        IndexType.Fulltext,
+        ["content"],
+        ["asc"]
+      ),
+    ]);
+    console.log("Indexes created successfully!");
+  } catch (error) {
+    console.error("Error creating indexes:", error);
+  }
+  
   console.log(`Indexes created for ${questionCollection}`);
 }
