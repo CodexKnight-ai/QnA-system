@@ -19,7 +19,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="relative flex min-h-screen w-screen bg-black flex-col items-center justify-center py-12 overflow-x-hidden">
       <Squares direction="diagonal" speed={0.2} borderColor={"#444"} hoverFillColor={"#444"}/>
-      <div className="relative">{children}</div>
+      <div className="relative overflow-x-hidden">{children}</div>
     </div>
   );
 };

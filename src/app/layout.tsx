@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/app/Navbar/Navbar"; // Ensure correct path
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className='pt-2 overflow-x-hidden' // Added pt-16 to prevent overlap
       >
+        <Navbar /> {/* Move Navbar inside body */}
         {children}
       </body>
     </html>
